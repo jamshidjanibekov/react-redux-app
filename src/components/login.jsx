@@ -27,7 +27,7 @@ const Login = () =>{
                     <Input label={'Password'} type={'password'} state={password} setState={setPassword}/>
 
                     <button className="w-100 btn btn-lg btn-primary mt-2" disabled={isLoading} onClick={loginHandler} type="submit">
-                        {isLoading ? "login..." : 'Login'}
+                        {isLoading ? "loading..." : 'Login'}
                     </button>
                 </form>
             </main>
