@@ -5,8 +5,7 @@ import AuthService from "./service/auth";
 import {useDispatch} from "react-redux";
 import {signUserSuccess} from "./slice/auth";
 import {getItem} from "./helpers/persistance-storage";
-import ArticleService from "./service/article";
-import {getArticlesStart, getArticleSuccess} from "./slice/article";
+
 const App = () =>{
     const dispatch = useDispatch()
     const getUser = async() =>{
@@ -17,23 +16,13 @@ const App = () =>{
            console.log(error)
        }
     }
-    const getArticles = async () =>{
-        dispatch(getArticlesStart())
-        try {
-            const response = await ArticleService.getArticles()
-            console.log(response)
-            dispatch(getArticleSuccess(response.articles))
-        }catch (error){
-            console.log(error)
-        }
-    }
+
     useEffect(() =>{
         const token = getItem('token')
         if (token){
             getUser()
         }
-        getArticles()
-    })
+    }, [])
   return (
       <div>
         <Navbar/>
