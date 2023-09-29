@@ -15,7 +15,11 @@ const ArticleService = {
     async deleteArticle(slug){
         const {data} = await axios.delete(`/articles/${slug}`)
         return data
-    }
+    },
+    async editArticle(slug, article){
+        const {data} = await axios.put(`/article/${slug}`, {article})
+        return data
+    },
 }
 
 export default ArticleService
